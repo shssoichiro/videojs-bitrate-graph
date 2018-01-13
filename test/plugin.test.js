@@ -46,13 +46,13 @@ QUnit.test('registers itself with video.js', function(assert) {
     'videojs-bitrate-graph plugin was registered'
   );
 
-  this.player.bitrateGraph();
+  this.player.bitrateGraph({ bitrates: [1, 2, 3] });
 
   // Tick the clock forward enough to trigger the player to be "ready".
   this.clock.tick(1);
 
   assert.ok(
-    this.player.hasClass('vjs-bitrate-graph'),
-    'the plugin adds a class to the player'
+    this.player.el().querySelector('.vjs-bitrate-graph'),
+    'the plugin adds a child to the player'
   );
 });

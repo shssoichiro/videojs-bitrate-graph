@@ -51,7 +51,7 @@ const buildHighchartsOptions = (bitrates) => ({
       color: '#ccc',
       enableMouseTracking: false,
       lineWidth: 1,
-      animation: false,
+      animation: false
     }
   ],
   credits: {
@@ -79,16 +79,17 @@ const buildChart = (player, options) => {
   }
 
   const graphEl = document.createElement('div');
+  const markerEl = document.createElement('div');
+
   graphEl.id = 'vjs-bitrate-graph';
   graphEl.className = 'vjs-bitrate-graph';
   player.el().insertBefore(graphEl, player.el().querySelector('.vjs-control-bar'));
 
-  const markerEl = document.createElement('div');
   markerEl.id = 'vjs-bitrate-graph-time-marker';
   markerEl.className = 'vjs-bitrate-graph-time-marker';
   player.el().insertBefore(markerEl, player.el().querySelector('.vjs-control-bar'));
 
-  return Highcharts.chart('vjs-bitrate-graph', buildHighchartsOptions(options.bitrates));
+  Highcharts.chart('vjs-bitrate-graph', buildHighchartsOptions(options.bitrates));
 };
 
 /**
@@ -104,13 +105,14 @@ const buildChart = (player, options) => {
  *           An object of options left to the plugin author to define.
  */
 const bitrateGraph = function(options) {
-  let chart;
   this.ready(() => {
-    chart = buildChart(this, videojs.mergeOptions(defaults, options));
+    buildChart(this, videojs.mergeOptions(defaults, options));
     this.on('timeupdate', () => {
-      let percent = this.currentTime() / this.duration();
-      player.el().querySelector('.vjs-bitrate-graph-time-marker').style.width = `${(percent * 100).toFixed(1)}%`;
-    })
+      const percent = this.currentTime() / this.duration() * 100;
+      const el = this.el().querySelector('.vjs-bitrate-graph-time-marker');
+
+      el.style.width = `${percent.toFixed(1)}%`;
+    });
   });
 };
 

@@ -1,6 +1,6 @@
 {
   "name": "videojs-bitrate-graph",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Shows a bitrate graph above the video controls",
   "main": "dist/videojs-bitrate-graph.cjs.js",
   "module": "dist/videojs-bitrate-graph.es.js",
@@ -51,6 +51,11 @@
       "test/karma.conf.js"
     ]
   },
+  "eslintConfig": {
+    "env": {
+      "browser": true
+    }
+  },
   "files": [
     "CONTRIBUTING.md",
     "dist/",
@@ -63,7 +68,7 @@
   "dependencies": {
     "global": "^4.3.2",
     "highcharts": "^6.0.4",
-    "video.js": "^5.19.2 || ^6.6.0"
+    "video.js": "^6.6.2"
   },
   "devDependencies": {
     "babel-plugin-external-helpers": "^6.22.0",
