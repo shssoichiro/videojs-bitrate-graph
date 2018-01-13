@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>videojs-bitrate-graph Demo</title>
+  <link href="node_modules/video.js/dist/video-js.css" rel="stylesheet">
+  <link href="dist/videojs-bitrate-graph.css" rel="stylesheet">
+</head>
+<body>
+  <video id="videojs-bitrate-graph-player" class="video-js vjs-default-skin" style="width: 800px;" controls>
+    <source src="//vjs.zencdn.net/v/oceans.mp4" type='video/mp4'>
+    <source src="//vjs.zencdn.net/v/oceans.webm" type='video/webm'>
+  </video>
+  <ul>
+    <li><a href="test/">Run unit tests in browser.</a></li>
+
+  </ul>
+
+  <script src="node_modules/video.js/dist/video.js"></script>
+  <script src="dist/videojs-bitrate-graph.js"></script>
+  <script>
+    (function(window, videojs) {
+      var player = window.player = videojs('videojs-bitrate-graph-player');
+      player.bitrateGraph({
+        bitrates: [35, 46, 69, 92, 183, 315, 399, 352, 61, 83, 444, 577, 1125, 880, 641, 583, 456, 718, 647, 488, 471, 480, 788, 943, 591, 670, 710, 703, 709, 803, 881, 587, 605, 320, 408, 202, 228, 284, 234, 109, 732, 754, 539, 534, 432, 0, 0]
+      });
+    }(window, window.videojs));
+  </script>
+</body>
+</html>

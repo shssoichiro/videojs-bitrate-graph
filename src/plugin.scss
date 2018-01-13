@@ -1,0 +1,63 @@
+.video-js {
+  .vjs-bitrate-graph, .vjs-bitrate-graph-time-marker {
+    height: 30px;
+    width: 100%;
+    position: absolute;
+    bottom: 3.0em;
+    left: 0;
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+    -webkit-transition: visibility 0.1s, opacity 0.1s;
+    -moz-transition: visibility 0.1s, opacity 0.1s;
+    -ms-transition: visibility 0.1s, opacity 0.1s;
+    -o-transition: visibility 0.1s, opacity 0.1s;
+    transition: visibility 0.1s, opacity 0.1s;
+  }
+
+  .vjs-bitrate-graph {
+    right: 0;
+  }
+
+  .vjs-bitrate-graph-time-marker {
+    background-color: transparent;
+    border-right: 2px solid #ccc;
+    z-index: 1;
+  }
+
+  &.vjs-has-started {
+    .vjs-bitrate-graph, .vjs-bitrate-graph-time-marker {
+      display: -webkit-box;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      visibility: visible;
+      opacity: .75;
+      -webkit-transition: visibility 0.1s, opacity 0.1s;
+      -moz-transition: visibility 0.1s, opacity 0.1s;
+      -ms-transition: visibility 0.1s, opacity 0.1s;
+      -o-transition: visibility 0.1s, opacity 0.1s;
+      transition: visibility 0.1s, opacity 0.1s;
+    }
+  }
+
+  &.vjs-has-started.vjs-user-inactive.vjs-playing {
+    .vjs-bitrate-graph, .vjs-bitrate-graph-time-marker {
+      visibility: visible;
+      opacity: 0;
+      -webkit-transition: visibility 1s, opacity 1s;
+      -moz-transition: visibility 1s, opacity 1s;
+      -ms-transition: visibility 1s, opacity 1s;
+      -o-transition: visibility 1s, opacity 1s;
+      transition: visibility 1s, opacity 1s;
+    }
+  }
+
+  &.vjs-controls-disabled,
+  &.vjs-using-native-controls,
+  &.vjs-error {
+    .vjs-bitrate-graph, .vjs-bitrate-graph-time-marker {
+      display: none !important;
+    }
+  }
+}
