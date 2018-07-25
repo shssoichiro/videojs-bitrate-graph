@@ -10,18 +10,18 @@ import json from 'rollup-plugin-json';
 import resolve from 'rollup-plugin-node-resolve';
 
 export default {
-  name: 'videojsBitrateGraph',
   input: 'src/plugin.js',
   output: {
     file: 'dist/videojs-bitrate-graph.js',
-    format: 'umd'
+    format: 'umd',
+    globals: {
+      'video.js': 'videojs'
+    },
+    name: 'videojsBitrateGraph'
   },
   external: [
     'video.js'
   ],
-  globals: {
-    'video.js': 'videojs'
-  },
   plugins: [
     resolve({
       browser: true,
